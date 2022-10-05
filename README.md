@@ -1,3 +1,3 @@
 # Primer-Parcial-Laboratorio-II
 
-No llege a terminar, pero sastifecho con el poco tiempo que le pude dedicar (4 dias y medio)
+Un ejercisio/parcial bastante complejo, no le he podido dedicar el tiempo suficiente como queria, pero llegue hasta cierto punto, aun le falta algun que otro chequeo, fue todo un desafio realizarlo.
