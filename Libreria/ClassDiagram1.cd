@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Libreria.entidades.Embarcos">
+    <Position X="12.75" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAEAAAAACMhABAgAQAQAQAAIAEGAAACBgAAiA=</HashCode>
+      <FileName>entidades\Crucero.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Libreria.entidades.Equipaje">
+    <Position X="7.75" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAABBEgAAAQAAAAACAAIAAADAAAAAgAiA=</HashCode>
+      <FileName>entidades\Equipaje.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Libreria.entidades.Pasajeros">
+    <Position X="7.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAkAAAAIAAA=</HashCode>
+      <FileName>entidades\Pasajeros.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Libreria.entidades.Pasaporte">
+    <Position X="9.75" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAABACAAAEgAACAAACAAAAAEAAAAAAABAAAiA=</HashCode>
+      <FileName>entidades\Pasaporte.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Libreria.entidades.Persona">
+    <Position X="5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAABAAQAAACEgAAAgCAAAAAgAoAAAAIAAAAAAiA=</HashCode>
+      <FileName>entidades\Persona.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Libreria.entidades.Viajes">
+    <Position X="1" Y="0.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>EQBDAQIAQAABEAAEgQRAAAAAAICABICAAAQAABkAAyE=</HashCode>
+      <FileName>entidades\Viajes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Libreria.entidades.ViajesExtraRegional">
+    <Position X="0.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAQAAAAAAAAAAAAAIAAAACAAAAAAA=</HashCode>
+      <FileName>entidades\ViajesExtraRegional.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Libreria.entidades.ViajeSudamericanos">
+    <Position X="10.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAEAAAAAAAAAAAAAAIAAAACAAAAAAA=</HashCode>
+      <FileName>entidades\ViajeSudamericanos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Libreria.Enumeradores.EEstadoViaje">
+    <Position X="2.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAIEAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Enumeradores\EEstadoViaje.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Libreria.Enumeradores.ESudamericanos">
+    <Position X="0.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAIAAEAAAAAAAIABAABAGACABAAAAQgAAAEAgAECBA=</HashCode>
+      <FileName>Enumeradores\ESudamericanos.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Libreria.Enumeradores.EExtraRegional">
+    <Position X="5.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAoBAAAFAAAAAEAAAQAAAAAAgAAAAIAEAAAAgEQAAAA=</HashCode>
+      <FileName>Enumeradores\EExtraRegional.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Libreria.Enumeradores.ETipoClase">
+    <Position X="2.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Enumeradores\ETipoClase.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

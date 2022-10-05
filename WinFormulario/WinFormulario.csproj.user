@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Controlador\CaracteristicasDelViaje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controlador\formEquipaje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controlador\frmCargarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controlador\frmConsultarPasaporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controlador\frmEstadisticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controlador\frmInformacionBarco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controlador\frmInformacionDeViaje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controlador\frmInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controlador\frmListaViajes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controlador\frmLogeo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controlador\frmOpciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controlador\frmPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controlador\frmRegistrarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controlador\frmSeleccionarViaje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controlador\frmCargarViaje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

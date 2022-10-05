@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WinFormulario.Controlador.frmBaseDatos" Collapsed="true">
+    <Position X="3.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAEACAAAACCAACAIAACgAAAAgAAAAAgAAAAAAA=</HashCode>
+      <FileName>Controlador\frmBaseDatos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormulario.Controlador.frmCargarCliente" Collapsed="true">
+    <Position X="1.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABBAAACAAAACAAAYAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controlador\frmCargarCliente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormulario.Controlador.frmEstadisticas" Collapsed="true">
+    <Position X="6" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controlador\frmEstadisticas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormulario.Controlador.frmInformacionDeViaje" Collapsed="true">
+    <Position X="4" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACgAAAAAACAgAJAAAEDAAAhCMFA4AAAAEGAAAAAAAEI=</HashCode>
+      <FileName>Controlador\frmInformacionDeViaje.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormulario.Controlador.frmInicio" Collapsed="true">
+    <Position X="2" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAABAAAACAAAACAAAAAAEAAAACgAAAAAA=</HashCode>
+      <FileName>Controlador\frmInicio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormulario.Controlador.frmListaViajes" Collapsed="true">
+    <Position X="8" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>cEIEgFQAgCAAAhAAQhCAAAACAoApoAQAQGAGEAAAgAI=</HashCode>
+      <FileName>Controlador\frmListaViajes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormulario.Controlador.frmOpciones" Collapsed="true">
+    <Position X="3.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controlador\frmOpciones.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormulario.Controlador.frmSeleccionarViaje" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIEAADAICBIABCgQgCAgEECQAA4RAQAATABMAEAgAA=</HashCode>
+      <FileName>Controlador\frmSeleccionarViaje.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormulario.frmCargarViaje" Collapsed="true">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAADQAAhAQAAKAAADClwAYCIQAAGoEQAAAAEQ=</HashCode>
+      <FileName>Controlador\frmCargarViaje.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormulario.frmLogeo" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARAAgAAAACAAABAAACCAAAAGAABABAAAAEABAQAACAA=</HashCode>
+      <FileName>Controlador\frmLogeo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormulario.frmPanel" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAoIAADSAAAAAAAACAAAICAMAoQCgAAAAEAYBAAAg=</HashCode>
+      <FileName>Controlador\frmPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

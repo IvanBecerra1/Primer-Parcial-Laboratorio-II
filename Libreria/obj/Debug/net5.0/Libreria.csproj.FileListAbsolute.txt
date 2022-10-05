@@ -1,0 +1,12 @@
+C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\Libreria\bin\Debug\net5.0\Libreria.deps.json
+C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\Libreria\bin\Debug\net5.0\Libreria.dll
+C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\Libreria\bin\Debug\net5.0\Libreria.pdb
+C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\Libreria\obj\Debug\net5.0\Libreria.csproj.AssemblyReference.cache
+C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\Libreria\obj\Debug\net5.0\Libreria.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\Libreria\obj\Debug\net5.0\Libreria.AssemblyInfoInputs.cache
+C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\Libreria\obj\Debug\net5.0\Libreria.AssemblyInfo.cs
+C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\Libreria\obj\Debug\net5.0\Libreria.csproj.CoreCompileInputs.cache
+C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\Libreria\obj\Debug\net5.0\Libreria.dll
+C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\Libreria\obj\Debug\net5.0\refint\Libreria.dll
+C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\Libreria\obj\Debug\net5.0\Libreria.pdb
+C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\Libreria\obj\Debug\net5.0\ref\Libreria.dll
