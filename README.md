@@ -3,7 +3,7 @@
 ------------
 > Soy Ivan estudiante de la Tecnicatura Universitaria en Programacion en la facultad UTN Regional Avellaneda. En mi experiencia sobre el desarrollo de esta aplicacion, fue un total desafio, primero se puso en juego la creatividad de un diseño, algo que para mi es sumamente complejo, despues las implementaciones de codigo fue lo mas amigable, aun asi no dejo de lado todos los errores que fueron surgiendo. En conclusion se aprendio mucho y se sufrio algo.
 
-##Resumen
+## Resumen
 ------------
 Se trata el desarrollo de una aplicacion de ventas de pasajes para una empresa de embarcaciones.
 Las opciones que presenta la aplicacion son
@@ -30,20 +30,20 @@ Las opciones que presenta la aplicacion son
 	 Herencia: He utilizado la herencia tanto en Viajes Extra regional, sudamericano, y Pasajeros, el hecho que las haya utilizado fue porque se compartia parte de su estructura y funcionalidades que se iban a utilizar.
 	 Polimorfismo: Utilice el polimorfismo para acoplar en el atributo Destino.cs que tien cada entidad Barco digo acoplar, porque tenemos dos tipos de viajes, con destinos diferentes, entonces para que ese destino sea implementado al barco, lleve acabo el polimorfismo para aplicar funcionalidades diferentes.
 
-###Sobrecara: 
+### Sobrecara: 
 	Utilice sobrecarga en los constructores en varias ocaciones, una es en Viajes.CS  la razon de implementacion fue que en algunos casos no era necesario utilizar todos los parametros. Tambien utilice la sobrecarga de operadores y de conversion, los implemente ya que me fue necesario para verificar las "consultas en la base de datos".
-###Windows form: 
+### Windows form: 
 	La aplicacion esta desarrollada en windows form, utilice varios formularios para desarrollar un mejor perfomance en la interfaz grafica, inclui una herencia de formulario para los distintos paneles que se abririan. Lo puede encontrar como frmOpiones.cs
 
-###Colecciones:
+### Colecciones:
 	Utilice colecciones genericas principalmente, por que no he visto la necesidad usar una coleccion no generica. Utilice la coleccion List<T>, y HastSet<T>, esta ultima me ayudo evitar datos duplicados, a principio lo habia generado con un SortList y Dictonary, pero utilizarso no me fue lo mas optimo.
 
-###Encapsulamiento: 
+### Encapsulamiento: 
 	Utilice el encapsulamiento en los atributos para proteger sus datos, tambien utilice indexadores  en la clase BaseDatos.cs para hacer consultas. Utilice varios enumeradores para acotar los posibles valores y demas.
 
 ------------
 
-###Como propuesta de valor agregado 
+### Como propuesta de valor agregado 
 	Utilice un Partial para dividir la clase una que contenga solo parte logica y otra los miembros principales
 	Agregue la funcionalidad de mostrar a los pasajeros solo turista, premiun o todos.
 	Agregue una clase BaseDatos, que se compartira en los distintos formularios para hacer mas dinamico el programa.
