@@ -7,43 +7,44 @@ using System.Threading.Tasks;
 
 namespace Libreria.entidades
 {
-    public class Pasaporte
+    public sealed class Pasaporte
     {
         private string indentificador;
         private string lugarNacimiento;
-        private string fechaNacimiento;
-        private int cantidadDeViajes;
-
         private DateTime fechaVencimiento;
         private DateTime fechaDeAlta;
 
-        public DateTime FechaVencimiento { get => fechaVencimiento; set => fechaVencimiento = value; }
-        public DateTime FechaDeAlta { get => fechaDeAlta; set => fechaDeAlta = value; }
-        public string Indentificador { get => indentificador; set => indentificador = value; }
-
+    
+        #region constructores
         public Pasaporte()
         {
-            this.indentificador = Pasaporte.generarIndentificador();
         }
-        public Pasaporte(string lugarNacimiento, string fechaNacimiento, int cantidadDeViajes, DateTime fechaVencimiento, DateTime fechaDeAlta)
+        public Pasaporte(string indentificador, string lugarNacimiento, DateTime fechaVencimiento, DateTime fechaDeAlta)
         {
+            this.indentificador = indentificador;
             this.lugarNacimiento = lugarNacimiento;
-            this.fechaNacimiento = fechaNacimiento;
-            this.cantidadDeViajes = cantidadDeViajes;
             this.fechaVencimiento = fechaVencimiento;
             this.fechaDeAlta = fechaDeAlta;
         }
-
         public Pasaporte(string indentificador, DateTime fechaVencimiento, DateTime fechaDeAlta)
         {
             this.indentificador = indentificador;
             this.fechaVencimiento = fechaVencimiento;
             this.fechaDeAlta = fechaDeAlta;
         }
+        #endregion
 
+        #region propiedad
+        public DateTime FechaVencimiento { get => this.fechaVencimiento; set => this.fechaVencimiento = value; }
+        public DateTime FechaDeAlta { get => this.fechaDeAlta; set => this.fechaDeAlta = value; }
+        public string Indentificador { get => this.indentificador; set => this.indentificador = value; }
+
+        #endregion
+
+        #region sobrescritura
         public override string ToString()
         {
-            return $"numeroPasaporte: {this.indentificador} - lugar Nacimiento: {this.lugarNacimiento} - fechaNacimiento {this.fechaNacimiento} - cantidad Viaje {this.cantidadDeViajes}\n"
+            return $"numeroPasaporte: {this.indentificador} - lugar Nacimiento: {this.lugarNacimiento}\n"
                 + $"fecha de vencimiento: {this.fechaVencimiento} fecha de alta {this.fechaDeAlta}";
         }
 
@@ -51,49 +52,27 @@ namespace Libreria.entidades
         {
             if (obj is Pasaporte)
             {
-                return (this == (Pasaporte) obj);
+                return (this == (Pasaporte)obj);
             }
-            else 
+            else
                 return false;
         }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+        #endregion
+
+        #region sobrecarga de operadores
         public static bool operator ==(Pasaporte pasaporteA, Pasaporte pasaporteB)
         {
             return (pasaporteA.indentificador == pasaporteB.indentificador);
         }
-
         public static bool operator !=(Pasaporte pasaporteA, Pasaporte pasaporteB)
         {
             return (pasaporteA == pasaporteB);
         }
+        #endregion
 
-
-
-        // 3 letras y seis dígitos
-
-        private static string generarIndentificador()
-        {
-            string letras = "abcdefghijklnñopqmrwz";
-            string numeros = "0123456789";
-            string combinaciones = letras + letras.ToUpper();
-            string matricula = "";
-            int maximoLetras = 0;
-            Random rand = new Random();
-
-            do
-            {
-                if (maximoLetras < 3)
-                {
-                    char caracter = combinaciones[rand.Next(0, combinaciones.Length)];
-                    matricula += caracter;
-                    maximoLetras++;
-                }
-
-                char caracterNum = numeros[rand.Next(0, numeros.Length)];
-                matricula += caracterNum;
-
-            } while (matricula.Length < 9);
-
-            return matricula;
-        }
     }
 }

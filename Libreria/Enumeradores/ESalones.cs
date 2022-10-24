@@ -4,7 +4,7 @@
     public enum Esalones
     {
         Comedor,
-        Pisina,
+        Piscina,
         Gimnsaio
     }
 }

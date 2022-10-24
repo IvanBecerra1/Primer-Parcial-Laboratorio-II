@@ -17,39 +17,27 @@ namespace WinFormulario
     {
 
         private BaseDatos baseDatos;
-
         private Embarcos embarcosRegistrado;
-
-       // private Viajes viajeCreado;
-
-        private List<Viajes> viajeRegistrado;
-        /**/
-        private List<Embarcos> listaCruceros;
         private List<EExtraRegional> listaViajeExtraRegional;
         private List<ESudamericanos> listaViajeSudamericanos;
 
-
-        public List<Embarcos> ListaCruceros { get => listaCruceros; set => listaCruceros = value; }
-        public List<EExtraRegional> ListaViajeExtraRegional { get => listaViajeExtraRegional; set => listaViajeExtraRegional = value; }
-        public List<ESudamericanos> ListaViajeSudamericanos { get => listaViajeSudamericanos; set => listaViajeSudamericanos = value; }
-        public Embarcos EmbarcosRegistrado { get => embarcosRegistrado; set => embarcosRegistrado = value; }
-        public List<Viajes> ViajeRegistrado { get => viajeRegistrado; set => viajeRegistrado = value; }
-       // public Viajes ViajeCreado { get => viajeCreado; set => viajeCreado = value; }
-        public BaseDatos BaseDatos { get => baseDatos; set => baseDatos = value; }
+        public BaseDatos BaseDatos { get => this.baseDatos; set => this.baseDatos = value; }
 
         public frmCargarViaje(BaseDatos datos) 
         {
             this.baseDatos = datos;
-
             this.embarcosRegistrado = new Embarcos();
-            this.viajeRegistrado = new List<Viajes>();
-            this.listaCruceros = new List<Embarcos>();
 
             this.listaViajeExtraRegional = new List<EExtraRegional>();
             this.listaViajeSudamericanos = new List<ESudamericanos>();
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Boton donde se crea un viaje
+        /// teniendo todas sus validaciones y condiciones.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -72,7 +60,7 @@ namespace WinFormulario
                                                          EEstadoViaje.DISPONIBLE, fecha,
                                                          this.embarcosRegistrado);
 
-                baseDatos.ListaDeViajes.Add(viajeExtraRegional_1);
+                this.baseDatos.ListaDeViajes.Add(viajeExtraRegional_1);
             }
             else if (this.rButtonSudamericanos.Checked == true)
             {
@@ -82,11 +70,16 @@ namespace WinFormulario
                                                          this.embarcosRegistrado);
           
 
-                baseDatos.ListaDeViajes.Add(viajeSudamericano);
+                this.baseDatos.ListaDeViajes.Add(viajeSudamericano);
             }
 
             this.DialogResult = DialogResult.OK;
         }
+        /// <summary>
+        /// Cargamos los datos necesarios
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmCargarViaje_Load(object sender, EventArgs e)
         {
 
@@ -128,14 +121,16 @@ namespace WinFormulario
 
             foreach (Embarcos aux in baseDatos.ListaDeBarcos)
             {
-                if (aux.Disponible == false)
-                    continue;
-
                 this.comboBoxListaCruceros.Items.Add(aux);
             }
             
         }
-        // Extra regionales
+
+        /// <summary>
+        /// Cambia el comboBox de lugares/destinos a lista de extra regionales
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rButtonExtraRegionales_CheckedChanged(object sender, EventArgs e)
         {
             if (this.rButtonExtraRegionales.Checked == true)
@@ -144,6 +139,11 @@ namespace WinFormulario
             }
         }
 
+        /// <summary>
+        /// Cambia el combobox de lugares/destinos a lista de sudamericanos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rButtonSudamericanos_CheckedChanged(object sender, EventArgs e)
         {
             if (this.rButtonSudamericanos.Checked == true)
@@ -151,18 +151,26 @@ namespace WinFormulario
                 this.comboBoxListaDeLugares.DataSource = listaViajeSudamericanos;
             }
         }
-
+        /// <summary>
+        /// Validaciones necesarias para crear un viaje
+        /// </summary>
+        /// <param name="indexCrucero"></param>
+        /// <param name="indexLugares"></param>
+        /// <param name="fechaSeleccionado"></param>
+        /// <returns></returns>
         private bool validaciones(int indexCrucero, int indexLugares, DateTime fechaSeleccionado)
         {
-
-
-
             if (indexCrucero == -1 || indexLugares == -1)
             {
                 manejoDeMensajes("Seleccione un barco/Destino para avanzar");
                 return true;
             }
-
+            
+            if (fechaSeleccionado < DateTime.Today)
+            {
+                manejoDeMensajes("Seleccione una fecha valida");
+                return true;
+            }
             foreach (ViajesProgramados aux in this.embarcosRegistrado.ListaViajesProgramados)
             {
                 if ((fechaSeleccionado >= aux.FechaSalida) && (fechaSeleccionado <= aux.FechaLlegada))
@@ -176,17 +184,31 @@ namespace WinFormulario
 
             return false;
         }
+        /// <summary>
+        /// Imprime el mensaje dependiendo cuando se lo invoque
+        /// </summary>
+        /// <param name="texto"></param>
         private void manejoDeMensajes(string texto)
         {
             this.lblError.Visible = true;
             this.lblError.Text = texto;
         }
-
+        /// <summary>
+        /// Boton de cancelar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
         }
 
+        /// <summary>
+        /// Este evento del combo box nos sirve para obtener el index del crucero
+        /// asi cargar los viajes programados que tenga el barco
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboBoxListaCruceros_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.listBoxFechas.Items.Clear();
@@ -198,6 +220,20 @@ namespace WinFormulario
             {
                 this.listBoxFechas.Items.Add(aux.ToString());
             }
+        }
+
+        /// <summary>
+        /// Boton de ayuda/explicacion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button3_Click(object sender, EventArgs e)
+        {
+            StringBuilder text = new StringBuilder();
+            text.AppendLine("* Primero seleccione un crucero");
+            text.AppendLine("* Para registrar una fecha procure que no este superpuesta con otra fecha");
+            text.AppendLine("* Podra seleccionar los distintos tipos de viaje extra regional o sudamericano");
+            MessageBox.Show(text.ToString(), "Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
     }
 }

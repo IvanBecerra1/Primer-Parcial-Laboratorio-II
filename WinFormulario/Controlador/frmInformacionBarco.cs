@@ -28,12 +28,21 @@ namespace WinFormulario.Controlador
         {
             this.DialogResult = DialogResult.OK;
         }
-
+        /// <summary>
+        /// Carga la informacion del barco
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmInformacionBarco_Load(object sender, EventArgs e)
         {
             this.textBoxMatricula.Text = embarco.Matricula;
             this.textBoxNombre.Text = embarco.Nombre;
-            this.textBoxCamarotes.Text = embarco.CantidadCamarotes.ToString();
+
+
+            int cantCamarotesDisponiblesPremiun = (int)Math.Round((embarco.CantidadCamarotes * 0.35) * 4);
+            int cantCamarotesDisponiblesTurista = (embarco.CantidadCamarotes * 4) - cantCamarotesDisponiblesPremiun;
+            int camarotesTotales = cantCamarotesDisponiblesPremiun + cantCamarotesDisponiblesTurista;
+            this.textBoxCamarotes.Text = camarotesTotales.ToString();
             this.textBoxCasino.Text = embarco.Casino == false ? "Ninguno" : "Si";
 
             foreach (ViajesProgramados aux in embarco.ListaViajesProgramados)
@@ -45,11 +54,6 @@ namespace WinFormulario.Controlador
             {
                 this.listBoxSalones.Items.Add(aux.ToString());
             }
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

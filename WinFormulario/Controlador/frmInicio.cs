@@ -25,13 +25,6 @@ namespace WinFormulario.Controlador
         }
         private void frmInicio_Load(object sender, EventArgs e)
         {
-            this.lblBienvenida.Text = $"Bienvenido {this.baseDatos.UsuarioRegistrado.Nombre} al sistema";
-            this.lblFecha.Text = $"La fecha actual es: {DateTime.Today}";
-        }
-
-        private void lblBienvenida_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -5,34 +5,29 @@ using System.Linq;
 
 namespace Libreria.entidades
 {
-    public class Embarcos
+    public sealed partial class Embarcos
     {
-        protected bool disponible;
-        protected string matricula; // alfanumerico de 8 digitos
-        protected string nombre;
-
-        protected int cantidadCamarotes;
-        protected int cantidadSalones;
-        protected List<Esalones> listaSalones;
-        protected List<ViajesProgramados> listaViajesProgramados;
-
-        protected double capacidadBodega;
-        protected bool casino;
-        protected List<DateTime> fechasProgramadas;
-
+        private string matricula;
+        private string nombre;
+        private int cantidadCamarotes;
+        private int cantidadSalones;
+        private double capacidadBodega;
         private double horasDeViaje;
+        private bool casino;
+        private List<Esalones> listaSalones;
+        private List<ViajesProgramados> listaViajesProgramados;
 
+        #region constructores
         public Embarcos()
         {
             this.listaViajesProgramados = new List<ViajesProgramados>();
-            this.fechasProgramadas = new List<DateTime>();
-            this.listaSalones = new List<Esalones>();            
-            this.matricula = Embarcos.generarMatricula();
+            this.listaSalones = new List<Esalones>();
 
-            disponible = true;
+            this.matricula = Embarcos.GenerarMatricula();
             this.listaSalones.Add(Esalones.Comedor);
         }
-        public Embarcos(string nombre, int cantidadCamarotes, int cantidadSalones, double capacidadBodega, bool casino) : this()
+        public Embarcos(string nombre, int cantidadCamarotes, int cantidadSalones, double capacidadBodega, bool casino) 
+            : this()
         {
             this.nombre = nombre;
             this.cantidadCamarotes = cantidadCamarotes;
@@ -41,46 +36,77 @@ namespace Libreria.entidades
             this.casino = casino;
         }
 
+        #endregion
+
+        #region Propiedades
         public string Matricula
         {
-            get { return matricula; }
-            set { matricula = value; }
+            get { return this.matricula; }
+            set { this.matricula = value; }
         }
 
         public string Nombre
         {
-            get { return nombre; }
-            set { nombre = value; }
+            get { return this.nombre; }
+            set { this.nombre = value; }
         }
 
         public int CantidadCamarotes
         {
-            get { return cantidadCamarotes; }
-            set { cantidadCamarotes = value; }
+            get { return this.cantidadCamarotes; }
+            set { this.cantidadCamarotes = value; }
         }
 
         public int CantidadSalones
         {
-            get { return cantidadSalones; }
-            set { cantidadSalones = value; }
+            get { return this.cantidadSalones; }
+            set { this.cantidadSalones = value; }
         }
 
         public double CapacidadBodega
         {
-            get { return capacidadBodega; }
-            set { capacidadBodega = value; }
+            get { return this.capacidadBodega; }
+            set { this.capacidadBodega = value; }
         }
 
+        public List<Esalones> ListaSalones
+        {
+            get => this.listaSalones;
+            set => this.listaSalones = value;
+        }
+        public double CapacidadBodega1
+        {
+            get => this.capacidadBodega;
+            set => this.capacidadBodega = value;
+        }
+
+        public List<ViajesProgramados> ListaViajesProgramados
+        {
+            get => this.listaViajesProgramados;
+            set => this.listaViajesProgramados = value;
+        }
+        public bool Casino
+        {
+            get => this.casino;
+            set => this.casino = value;
+        }
+        public double HorasDeViaje
+        {
+            get => this.horasDeViaje;
+            set => this.horasDeViaje = value;
+        }
+        #endregion
+
+        #region Sobrescritura
         public override string ToString()
         {
             return $"Matricula {this.matricula} - {this.nombre} - Duracion acumulada: {this.HorasDeViaje}";
         }
-
         public override bool Equals(object obj)
         {
             if (obj is Embarcos)
             {
-                return (this == ((Embarcos) obj));
+                return (this == ((Embarcos)obj));
             }
             else
                 return false;
@@ -90,60 +116,6 @@ namespace Libreria.entidades
         {
             return base.GetHashCode();
         }
-
-        public static bool operator ==(Embarcos cruceroA, string nombre)
-        {
-            return (cruceroA.nombre == nombre);
-        }
-
-        public static bool operator !=(Embarcos cruceroA, string nombre)
-        {
-            return (cruceroA.nombre == nombre);
-        }
-
-        public static bool operator ==(Embarcos cruceroA, Embarcos cruceroB)
-        {
-            if (cruceroA is null || cruceroB is null)
-            {
-                return false;
-            }
-
-            return (cruceroA.matricula == cruceroB.matricula);
-        }
-
-        public static bool operator !=(Embarcos cruceroA, Embarcos cruceroB)
-        {
-            return !(cruceroA == cruceroB);
-        }
-
-        public List<Esalones> ListaSalones { get => listaSalones; set => listaSalones = value; }
-        public bool Disponible { get => disponible; set => disponible = value; }
-        public double CapacidadBodega1 { get => capacidadBodega; set => capacidadBodega = value; }
-        public List<DateTime> FechasProgramadas { get => fechasProgramadas; set => fechasProgramadas = value; }
-        public List<ViajesProgramados> ListaViajesProgramados { get => listaViajesProgramados; set => listaViajesProgramados = value; }
-        public bool Casino { get => casino; set => casino = value; }
-        public double HorasDeViaje { get => horasDeViaje; set => horasDeViaje = value; }
-
-        private static string generarMatricula()
-        {
-
-            string letras = "abcdefghijklnñopqmrwz";
-            string numeros = "123456789";
-            string combinaciones = letras + letras.ToUpper();
-            string matricula = "";
-
-            Random rand = new Random();
-
-            do
-            {
-                char caracter = combinaciones[rand.Next(0, combinaciones.Length)];
-                char caracterNum = numeros[rand.Next(0, numeros.Length)];
-
-                matricula += string.Concat(caracter, caracterNum);
-
-            } while (matricula.Length < 8);
-
-            return matricula;
-        }
+        #endregion
     }
 }

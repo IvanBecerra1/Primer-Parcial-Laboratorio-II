@@ -7,6 +7,9 @@
     <Compile Update="Controlador\formEquipaje.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Controlador\frmBoleto.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Controlador\frmCargarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -44,6 +47,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Controlador\frmCargarViaje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmPasajeGrupoFamiliar.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

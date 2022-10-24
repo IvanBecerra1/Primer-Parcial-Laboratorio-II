@@ -3,28 +3,28 @@
   <Class Name="Libreria.entidades.Embarcos">
     <Position X="12.75" Y="0.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAAEAAAAACMhABAgAQAQAQAAIAEGAAACBgAAiA=</HashCode>
+      <HashCode>AgAQAAIAEAAAEAKMhABCgAQAUIQAAIAEGAAACBgAAiA=</HashCode>
       <FileName>entidades\Crucero.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Libreria.entidades.Equipaje">
     <Position X="7.75" Y="7" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAABBEgAAAQAAAAACAAIAAADAAAAAgAiA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAABEgAAAQAABACAAAYAgAAEAAAAAAAA=</HashCode>
       <FileName>entidades\Equipaje.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Libreria.entidades.Pasajeros">
     <Position X="7.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAkAAAAIAAA=</HashCode>
+      <HashCode>ABAAAAAQAAAAAQAEAAEAAAAAAAAAAAAAAAkAAAAJAAA=</HashCode>
       <FileName>entidades\Pasajeros.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Libreria.entidades.Pasaporte">
     <Position X="9.75" Y="0.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAAABACAAAEgAACAAACAAAAAEAAAAAAABAAAiA=</HashCode>
+      <HashCode>AAAIAAAAABACAAAUggICAAACAAAAAEAAAAAAABAAAiA=</HashCode>
       <FileName>entidades\Pasaporte.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -38,21 +38,21 @@
   <Class Name="Libreria.entidades.Viajes">
     <Position X="1" Y="0.75" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>EQBDAQIAQAABEAAEgQRAAAAAAICABICAAAQAABkAAyE=</HashCode>
+      <HashCode>UQBDAQIAQAAREAAEwSRCAAAAAJCQBICAIAQCAnkAAyM=</HashCode>
       <FileName>entidades\Viajes.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Libreria.entidades.ViajesExtraRegional">
-    <Position X="0.75" Y="5" Width="1.5" />
+    <Position X="5.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAEAAAQAAAAAAAAAAAAAIAAAACAAAAAAA=</HashCode>
+      <HashCode>AAAEAAAAAAAAEAAAQCAAAAAAAAAAAAIAAAACAAAAAAA=</HashCode>
       <FileName>entidades\ViajesExtraRegional.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Libreria.entidades.ViajeSudamericanos">
     <Position X="10.5" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAEAAEAAAAAAAAAAAAAAIAAAACAAAAAAA=</HashCode>
+      <HashCode>AAAEAAAAAAAAEAAEQCAAAAAAAAAAAAIAAAACAAAAAAA=</HashCode>
       <FileName>entidades\ViajeSudamericanos.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -64,7 +64,7 @@
     </TypeIdentifier>
   </Enum>
   <Enum Name="Libreria.Enumeradores.ESudamericanos">
-    <Position X="0.75" Y="7" Width="1.5" />
+    <Position X="0.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAIAAEAAAAAAAIABAABAGACABAAAAQgAAAEAgAECBA=</HashCode>
       <FileName>Enumeradores\ESudamericanos.cs</FileName>

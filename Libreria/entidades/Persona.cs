@@ -33,18 +33,18 @@ namespace Libreria.entidades
         }
         #endregion
 
-        #region Props
+        #region propiedades
 
-        public string Nombre { get => nombre; set => nombre = value; }
-        public string Apellido { get => apellido; set => apellido = value; }
-        public string Dni { get => dni; set => dni = value; }
-        public string Edad { get => edad; set => edad = value; }
-        public string Nacionalidad { get => nacionalidad; set => nacionalidad = value; }
-        public Pasaporte Pasaporte { get => pasaporte; set => pasaporte = value; }
+        public string Nombre { get => this.nombre; set => this.nombre = value; }
+        public string Apellido { get => this.apellido; set => this.apellido = value; }
+        public string Dni { get => this.dni; set => this.dni = value; }
+        public string Edad { get => this.edad; set => this.edad = value; }
+        public string Nacionalidad { get => this.nacionalidad; set => this.nacionalidad = value; }
+        public Pasaporte Pasaporte { get => this.pasaporte; set => this.pasaporte = value; }
 
         #endregion
 
-        #region Encapsulamiento
+        #region sobrescritura
         public override string ToString()
         {
             return $"nombre: {this.Nombre} - apellido {this.apellido} - dni: {this.dni}\nedad {this.edad} - nacionalidad {this.nacionalidad}\n" +
@@ -67,33 +67,28 @@ namespace Libreria.entidades
 
         #endregion
 
+        #region sobrecarga de operadores
+
 
         public static bool operator ==(Persona personaA, Persona personaB)
         {
-            /*Chequear que no sea nulo*/
-
             return (personaA.dni == personaB.dni);
         }
 
         public static bool operator !=(Persona personaA, Persona personaB)
         {
-            /*Chequear que no sea nulo*/
-
             return !(personaA == personaB);
         }
 
         public static bool operator ==(Persona personaA, string dni)
         {
-            /*Chequear que no sea nulo*/
-
             return (personaA.dni == dni);
         }
 
         public static bool operator !=(Persona personaA, string dni)
         {
-            /*Chequear que no sea nulo*/
-
             return !(personaA == dni);
         }
+        #endregion
     }
 }
