@@ -19,9 +19,8 @@ Las opciones que presenta la aplicacion son
 
 ## Justificacion Tecnica
 #### Introduccion
-En esta sesion se utilizo todo tipo de datos necesarios para el desarrollo del programa,
-se utilizo setencias de seleccion, setencias de iteracion,
-condicionales, variables enteros, string double y demas
+
+> En esta sesion se utilizo todo tipo de datos necesarios para  el desarrollo del programa, se utilizo setencias de seleccion, setencias de iteracion, condicionales, variables enteros, string double y demas
 
 
 #### Clases y metodos estaticos
@@ -29,13 +28,13 @@ condicionales, variables enteros, string double y demas
 	Clase estatica: si bien no la utilice, podria haberlo implementado tranquilamente como  una clase que contenga los metodos de clase que contenga BaseDatos.cs
 
 #### Programacion Orientada a objetos
-	 Se utilizo clases y objetos en todo el desarrollo
+> Se utilizo clases y objetos en todo el desarrollo
 	 Abstraccion: Implemente la abstraccion en la clase Viajes.cs porque al desarrollar el programa se distingue entre dos tipos de viajes, y ademas su costo en pasaje es diferente, entonces lleve a cabo un metodo abstracto para que atraves de una herencia, imeplemte dicho metodo y se desarrolle su logica propia para cada clase "Opinion personal: generar una clase abstracta, fue un tanto forzosa para mi implementarlo, por el hecho de que debia cumplir la consigna, creo que no hubiese sido necesario, incluso a principio habia desarrollado toda la entidad sin necesidad de la clase abstracta."
 	 Herencia: He utilizado la herencia tanto en Viajes Extra regional, sudamericano, y Pasajeros, el hecho que las haya utilizado fue porque se compartia parte de su estructura y funcionalidades que se iban a utilizar.
 	 Polimorfismo: Utilice el polimorfismo para acoplar en el atributo Destino.cs que tien cada entidad Barco digo acoplar, porque tenemos dos tipos de viajes, con destinos diferentes, entonces para que ese destino sea implementado al barco, lleve acabo el polimorfismo para aplicar funcionalidades diferentes.
 
 ### Sobrecara: 
-	Utilice sobrecarga en los constructores en varias ocaciones, una es en Viajes.CS  la razon de implementacion fue que en algunos casos no era necesario utilizar todos los parametros. Tambien utilice la sobrecarga de operadores y de conversion, los implemente ya que me fue necesario para verificar las "consultas en la base de datos".
+> Utilice sobrecarga en los constructores en varias ocaciones, una es en Viajes.CS  la razon de implementacion fue que en algunos casos no era necesario utilizar todos los parametros. Tambien utilice la sobrecarga de operadores y de conversion, los implemente ya que me fue necesario para verificar las "consultas en la base de datos".
 ### Windows form: 
 	La aplicacion esta desarrollada en windows form, utilice varios formularios para desarrollar un mejor perfomance en la interfaz grafica, inclui una herencia de formulario para los distintos paneles que se abririan. Lo puede encontrar como frmOpiones.cs
 
