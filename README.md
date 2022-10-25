@@ -8,6 +8,7 @@
 Se trata el desarrollo de una aplicacion de ventas de pasajes para una empresa de embarcaciones.
 Las opciones que presenta la aplicacion son
 - Sistema de Logeo
+> ![](https://postimg.cc/rKw1vRtV][img]https://i.postimg.cc/rKw1vRtV/opcion-Cargar-Pasajero.png)
 - Sistema de ventas de pasaje
 - Sistema de creacion de un viaje
 - Sistema de informacion de cada viaje y pasajero
