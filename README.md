@@ -48,5 +48,5 @@ Las opciones que presenta la aplicacion son
 
 ### Como propuesta de valor agregado 
 > * Agregue la funcionalidad de mostrar a los pasajeros solo turista, premiun o todos.
- * Agregue una clase BaseDatos, que se compartira en los distintos formularios para hacer mas dinamico el programa.
- * Implemente un formulario de busqueda de viajes, donde tiene opciones para buscar por crucero, fecha, o destino.
+> * Agregue una clase BaseDatos, que se compartira en los distintos formularios para hacer mas dinamico el programa.
+> * Implemente un formulario de busqueda de viajes, donde tiene opciones para buscar por crucero, fecha, o destino.
