@@ -220,7 +220,7 @@ namespace Libreria.entidades
 
                 ETipoClase tipo = (num.Next(0, 3) != 0 ? ETipoClase.TURISTA : ETipoClase.PREMIUN);
 
-                Pasajeros entidadPasajero_1 = new Pasajeros(tipo, new Equipaje(true, 2, 15),
+                Pasajeros entidadPasajero_1 = new Pasajeros(tipo, new Equipaje(true, 12, 0),
                                                 nombres_apellidos[num.Next(0, nombres_apellidos.Length)],
                                                 nombres_apellidos[num.Next(0, nombres_apellidos.Length)],
                                                 (num.Next(40000000, 90000000).ToString()),

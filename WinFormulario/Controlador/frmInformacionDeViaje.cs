@@ -102,7 +102,6 @@ namespace WinFormulario.Controlador
         /// <param name="e"></param>
         private void button2_Click_1(object sender, EventArgs e)
         {
-            LimpiarTextBox();
            string entrada = this.textBoxNDocumento.Text;
            if (verificacion(entrada, this.viajeObtenido))
            {
@@ -111,6 +110,8 @@ namespace WinFormulario.Controlador
            List<Pasajeros> listaFiltrada = new List<Pasajeros>();
            listaFiltrada.Add(BaseDatos.buscarPasajeroPorDocumento(entrada, this.viajeObtenido.ListaPasajeros));
            cargarTabla(listaFiltrada);
+           LimpiarTextBox();
+
         }
         /// <summary>
         /// Boton para buscar pasajero por Pasaporte
@@ -119,7 +120,6 @@ namespace WinFormulario.Controlador
         /// <param name="e"></param>
         private void button3_Click_1(object sender, EventArgs e)
         {
-            LimpiarTextBox();
             string entrada = this.textBoxNPasaporte.Text;
             if (verificacion(entrada, this.viajeObtenido))
             {
@@ -128,8 +128,7 @@ namespace WinFormulario.Controlador
             List<Pasajeros> listaFiltrada = new List<Pasajeros>();
             listaFiltrada.Add(BaseDatos.buscarPasajeroPorPasaporte(entrada, this.viajeObtenido.ListaPasajeros));
             cargarTabla(listaFiltrada);
-
-
+            LimpiarTextBox();
         }
         /// <summary>
         /// Boton para buscar por nombre
@@ -138,7 +137,6 @@ namespace WinFormulario.Controlador
         /// <param name="e"></param>
         private void button4_Click_1(object sender, EventArgs e)
         {
-            LimpiarTextBox();
             string entrada = this.textBoxBuscarPorNombre.Text;
             if (verificacion(entrada, this.viajeObtenido))
             {
@@ -147,6 +145,7 @@ namespace WinFormulario.Controlador
             List<Pasajeros> listaFiltrada = new List<Pasajeros>();
             listaFiltrada = BaseDatos.buscarPasajeroPorNombre(entrada, this.viajeObtenido.ListaPasajeros);
             cargarTabla(listaFiltrada);
+            LimpiarTextBox();
         }
         /// <summary>
         /// Boton para buscar por apellido
@@ -155,7 +154,6 @@ namespace WinFormulario.Controlador
         /// <param name="e"></param>
         private void button5_Click_1(object sender, EventArgs e)
         {
-            LimpiarTextBox();
             string entrada = this.textBoxBuscarPorApellido.Text;
             if (verificacion(entrada, this.viajeObtenido))
             {
@@ -166,6 +164,7 @@ namespace WinFormulario.Controlador
             List<Pasajeros> listaFiltrada = new List<Pasajeros>();
             listaFiltrada = BaseDatos.buscarPasajeroPorApellido(entrada, this.viajeObtenido.ListaPasajeros);
             cargarTabla(listaFiltrada);
+            LimpiarTextBox();
         }
 
 

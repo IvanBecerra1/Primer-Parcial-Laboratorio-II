@@ -51,7 +51,7 @@ namespace WinFormulario
 
             foreach (Pasajeros auxPasajero in this.listaPasajeros)
             {   
-                string datos = (auxPasajero.Nombre + " - " + auxPasajero.Apellido);
+                string datos = (auxPasajero.Nombre + " - " + auxPasajero.Apellido + " - " + auxPasajero.TipoClase.ToString() + " - DNI: " + auxPasajero.Dni + " - PASAPORTE: " + auxPasajero.Pasaporte.Indentificador);
                 this.comboBoxLista.Items.Add(datos);
             }
         }
