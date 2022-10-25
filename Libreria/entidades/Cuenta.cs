@@ -17,11 +17,11 @@ namespace Libreria.entidades
         public Cuenta(string usuario, string password) 
         {
             this.usuario = usuario;
-            this.Password = password;
+            this.password = password;
         }
-        public Cuenta(string nombre,string usuario, string password) : this(nombre, password)
+        public Cuenta(string nombre,string usuario, string password) : this(usuario, password)
         {
-            this.nombre = usuario;
+            this.nombre = nombre;
         }
         #endregion
 
