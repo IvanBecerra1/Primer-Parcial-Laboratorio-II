@@ -19,9 +19,10 @@ Las opciones que presenta la aplicacion son
 
 ## Justificacion Tecnica
 #### Introduccion
-```sh
-En esta sesion se utilizo todo tipo de datos necesarios para  el desarrollo del programa, se utilizo setencias de seleccion, setencias de iteracion, condicionales, variables enteros, string double y demas
-```
+En esta sesion se utilizo todo tipo de datos necesarios para el desarrollo del programa,
+se utilizo setencias de seleccion, setencias de iteracion,
+condicionales, variables enteros, string double y demas
+
 
 #### Clases y metodos estaticos
 	Utilice metodos estaticos principalmente en la clase BaseDatos.cs la razon porque las utilice fue que esos metodos no estaban involucradas a trabajar con la clase que las contiene.
