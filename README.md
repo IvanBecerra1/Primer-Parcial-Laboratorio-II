@@ -16,7 +16,7 @@ Las opciones que presenta la aplicacion son
 - Sistema de informacion de cada viaje y pasajero
 - [![opcion-Informacion-Pasajero.png](https://i.postimg.cc/GppKfVkF/opcion-Informacion-Pasajero.png)](https://postimg.cc/K1dtk9pj)
 - Sistema de estadisticas
-- [![opcion-Estadistica.png](https://i.postimg.cc/pLRqfpr1/opcion-Estadistica.png)](https://postimg.cc/gntVdcvv)
+- [![opcion-Estadistica.png](https://i.postimg.cc/nrVwHrmW/opcion-Estadistica.png)](https://postimg.cc/7GcN9xm1)
 
 ------------
 ## Diagrama de clases UML
@@ -55,3 +55,9 @@ Las opciones que presenta la aplicacion son
 > * Agregue la funcionalidad de mostrar a los pasajeros solo turista, premiun o todos.
 > * Agregue una clase BaseDatos, que se compartira en los distintos formularios para hacer mas dinamico el programa.
 > * Implemente un formulario de busqueda de viajes, donde tiene opciones para buscar por crucero, fecha, o destino.
+
+### Cuentas registradas
+> * usuario: ivan | contraseña: admin
+> * usuario: neiner | contraseña: admin
+> * usuario: felipe | contraseña: admin
+> * usuario: facundo | contraseña: admin
