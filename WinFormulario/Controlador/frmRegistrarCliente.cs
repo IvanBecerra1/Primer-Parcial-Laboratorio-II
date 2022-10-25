@@ -75,6 +75,11 @@ namespace WinFormulario.Controlador
             this.radioButton1.Checked = true;
             this.textBoxCostoPasaje.Text = viajeSeleccionado.CostoViajeTurista.ToString();
             this.textBoxValija2.Visible = false;
+
+            this.lblErrorDatosPasaporte.Visible = false;
+            this.lblErrorDatosEquipaje.Visible = false;
+            this.lblErrorDatosPasaporte.Visible = false;
+            this.lblErrorDatosPersonales.Visible = false;
         }
 
         /// <summary>
@@ -171,19 +176,10 @@ namespace WinFormulario.Controlador
             string edad = this.textBoxEdad.Text;
             string nacionalidad = this.textBoxNacionalidad.Text;
 
-            if (nombre.Length < 3 || apellido.Length < 3 || documento.Length < 4 || nacionalidad.Length < 3)
+            if (nombre.Length < 3 || apellido.Length < 3 || documento.Length < 4 || nacionalidad.Length < 3 || edad.Length > 3)
             {
                 this.lblErrorDatosPersonales.Visible = true;
                 this.lblErrorDatosPersonales.Text = "Error ingrese datos validos";
-                return;
-            }
-
-            Pasajeros encontrado = BaseDatos.buscarPasajeroPorDocumento(documento, this.viajeSeleccionado.ListaPasajeros);
-
-            if (encontrado is not null)
-            {
-                this.lblErrorDatosPersonales.Visible = true;
-                this.lblErrorDatosPersonales.Text = "Error, ya existe ese documento";
                 return;
             }
 
@@ -195,6 +191,12 @@ namespace WinFormulario.Controlador
                                             nacionalidad,
                                             pasaportePasajero);
 
+            if (this.viajeSeleccionado.ListaPasajeros.Contains(pasajero))
+            {
+                this.lblErrorDatosPersonales.Visible = true;
+                this.lblErrorDatosPersonales.Text = "Error, ese pasajero se encuentra registrado verifique (DNI/PASAPORTE)";
+                return;
+            }
 
             if (this.viajeSeleccionado.EstadoDelViaje == EEstadoViaje.LLENO)
             {

@@ -311,9 +311,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(3, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 30);
+            this.label6.Size = new System.Drawing.Size(63, 45);
             this.label6.TabIndex = 2;
-            this.label6.Text = "Indentificador";
+            this.label6.Text = "N. Indentificador";
             // 
             // label8
             // 
@@ -422,6 +422,7 @@
             this.lblValija2.Size = new System.Drawing.Size(81, 30);
             this.lblValija2.TabIndex = 14;
             this.lblValija2.Text = "Peso valija #2 (25KG)";
+            this.lblValija2.Visible = false;
             // 
             // label10
             // 

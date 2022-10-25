@@ -178,7 +178,10 @@ namespace WinFormulario.Controlador
                 costoFinal.ShowDialog();
 
                 if (costoFinal.DialogResult == DialogResult.Cancel)
+                {
+                    MessageBox.Show("Se cancelo la venta del pasaje", "Venta de boleto");
                     break;
+                }
 
                 if (costoFinal.DialogResult == DialogResult.OK)
                 {
@@ -189,6 +192,7 @@ namespace WinFormulario.Controlador
                     }
 
                     this.DialogResult = DialogResult.OK;
+                    MessageBox.Show("Se cargo el cliente exitosamente", "Venta de boleto");
                     break;
                 }
 

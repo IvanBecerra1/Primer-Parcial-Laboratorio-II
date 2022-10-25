@@ -72,7 +72,7 @@ namespace Libreria.entidades
 
         public static bool operator ==(Persona personaA, Persona personaB)
         {
-            return (personaA.dni == personaB.dni);
+            return (personaA.dni == personaB.dni) || (personaA.pasaporte.Indentificador == personaB.pasaporte.Indentificador);
         }
 
         public static bool operator !=(Persona personaA, Persona personaB)
