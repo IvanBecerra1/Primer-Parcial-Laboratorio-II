@@ -143,6 +143,45 @@ namespace Libreria.entidades
             return viajeA;
         }
 
+        public static Viajes operator -(Viajes viajeA, Pasajeros pasajero)
+        {
+            if (viajeA.estadoDelViaje == EEstadoViaje.EN_VIAJE
+               || viajeA.estadoDelViaje == EEstadoViaje.NO_DISPONIBLE)
+            {
+                return viajeA;
+            }
+
+            if (!(viajeA == pasajero))
+            {
+                return viajeA;
+            }
+
+            viajeA.listaPasajeros.Remove(pasajero);
+
+            double costo = 0;
+            if (pasajero.TipoClase == ETipoClase.TURISTA)
+            {
+                costo = Viajes.calcularPrecioFinalBoleto(viajeA, true);
+                viajeA.CantidadRestanteTurista++;
+            }
+            else
+            {
+                costo = Viajes.calcularPrecioFinalBoleto(viajeA, false);
+                viajeA.CantidadRestantePremiun++;
+            }
+
+            if (!(viajeA.cantidadRestanteTurista == 0 && viajeA.cantidadRestantePremiun == 0) )
+            {
+                viajeA.EstadoDelViaje = EEstadoViaje.DISPONIBLE;
+            }
+
+            viajeA.Destino.TotalFacturacion -= costo;
+            viajeA.destino.CantidadConcurrido--;
+            viajeA.tipoCrucero.CapacidadBodega += pasajero.Equipaje.PesoValija1;
+            viajeA.tipoCrucero.CapacidadBodega += pasajero.Equipaje.PesoValija2;
+
+            return viajeA;
+        }
         protected Viajes AgregarPasajero(Viajes viajeA, Pasajeros pasajero)
         {
             if (viajeA.estadoDelViaje == EEstadoViaje.EN_VIAJE

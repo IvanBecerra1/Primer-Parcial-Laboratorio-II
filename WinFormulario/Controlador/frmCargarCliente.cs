@@ -107,8 +107,13 @@ namespace WinFormulario.Controlador
 
                 if (costoFinal.DialogResult == DialogResult.OK)
                 {
+                    MessageBox.Show("Se cargo el cliente exitosamente", "Venta de boleto");
                     viajeObtenido += registrarCliente.PasajeroCreado;
                     this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Se cancelo la venta del pasaje", "Venta de boleto");
                 }
             }
         }

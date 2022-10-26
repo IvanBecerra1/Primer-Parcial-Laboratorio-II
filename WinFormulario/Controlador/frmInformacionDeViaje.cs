@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,6 +34,17 @@ namespace WinFormulario.Controlador
         /// </summary>
         public void cargarInformacionPasajero()
         {
+            if (viajeObtenido is null || pasajeroObtenido is null)
+            {
+                this.textBoxNombre.Clear();
+                this.textBoxApellido.Clear();
+                this.textBoxEdad.Clear();
+                this.textBoxNacionalidad.Clear();
+                this.textBoxCamarote.Clear();
+                this.textBoxNViajes.Clear();
+                return;
+            }
+
             this.textBoxNombre.Text = this.pasajeroObtenido;
             this.textBoxApellido.Text = this.pasajeroObtenido.Apellido;
             this.textBoxEdad.Text = ((int)this.pasajeroObtenido).ToString();
@@ -306,6 +318,34 @@ namespace WinFormulario.Controlador
         {
             MessageBox.Show("* Primero selecciona un viaje con el boton 'Seleccionar viaje'\n* Selecciona en la lista de pasajero, para poder visualizar su informacion\n* Utilice una vez seleccionado el viaje los distintos filtros/Busquedas.\n\nSi no hay pasajeros, es porque el viaje se encuentra vacio.", "Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Question);
 
+        }
+
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+            if (viajeObtenido is null || pasajeroObtenido is null || viajeObtenido.EstadoDelViaje == EEstadoViaje.NO_DISPONIBLE
+                || viajeObtenido.EstadoDelViaje == EEstadoViaje.EN_VIAJE)
+            {
+                return;
+            }
+
+            if (MessageBox.Show("Seguro que quieres eliminar este pasajero?", "Eliminar pasajero", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                foreach (Viajes auxViajes in this.baseDatos.ListaDeViajes)
+                {
+                    if (auxViajes == viajeObtenido)
+                    {
+
+                        this.baseDatos.ListaDeViajes.Remove(viajeObtenido);
+                        viajeObtenido -= pasajeroObtenido;
+                        this.baseDatos.ListaDeViajes.Add(viajeObtenido);
+                        pasajeroObtenido = null;
+                        break;
+                    }
+                }
+
+                cargarInformacionPasajero();
+                cargarTabla(viajeObtenido.ListaPasajeros);
+            }
         }
     }
 }
