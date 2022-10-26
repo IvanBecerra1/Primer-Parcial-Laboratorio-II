@@ -8,15 +8,15 @@
 Se trata el desarrollo de una aplicacion de ventas de pasajes para una empresa de embarcaciones.
 Las opciones que presenta la aplicacion son
 - Sistema de Logeo
-- [![opcion-Logeo.png](https://i.postimg.cc/9fNbHbpv/opcion-Logeo.png)](https://postimg.cc/KKBBnnCN)
+[![opcion-Logeo.png](https://i.postimg.cc/9fNbHbpv/opcion-Logeo.png)](https://postimg.cc/KKBBnnCN)
 - Sistema de ventas de pasaje
-- [![opcion-Cargar-Pasajero.png](https://i.postimg.cc/c4QFtQxn/opcion-Cargar-Pasajero.png)](https://postimg.cc/rKw1vRtV)
+[![opcion-Cargar-Pasajero.png](https://i.postimg.cc/c4QFtQxn/opcion-Cargar-Pasajero.png)](https://postimg.cc/rKw1vRtV)
 - Sistema de creacion de un viaje
-- [![opcion-Lista-De-Viajes.png](https://i.postimg.cc/BnpNM41Z/opcion-Lista-De-Viajes.png)](https://postimg.cc/cvKQJqmP)
+[![opcion-Lista-De-Viajes.png](https://i.postimg.cc/BnpNM41Z/opcion-Lista-De-Viajes.png)](https://postimg.cc/cvKQJqmP)
 - Sistema de informacion de cada viaje y pasajero
-- [![opcion-Informacion-Pasajero.png](https://i.postimg.cc/GppKfVkF/opcion-Informacion-Pasajero.png)](https://postimg.cc/K1dtk9pj)
+[![opcion-Informacion-Pasajero.png](https://i.postimg.cc/XvdzRbbB/opcion-Informacion-Pasajero.png)](https://postimg.cc/Z9YHNX0J)
 - Sistema de estadisticas
-- [![opcion-Estadistica.png](https://i.postimg.cc/nrVwHrmW/opcion-Estadistica.png)](https://postimg.cc/7GcN9xm1)
+[![opcion-Estadistica.png](https://i.postimg.cc/nrVwHrmW/opcion-Estadistica.png)](https://postimg.cc/7GcN9xm1)
 
 ------------
 ## Diagrama de clases UML
@@ -55,6 +55,7 @@ Las opciones que presenta la aplicacion son
 > * Agregue la funcionalidad de mostrar a los pasajeros solo turista, premiun o todos.
 > * Agregue una clase BaseDatos, que se compartira en los distintos formularios para hacer mas dinamico el programa.
 > * Implemente un formulario de busqueda de viajes, donde tiene opciones para buscar por crucero, fecha, o destino.
+> * Implemente una opcion de eliminar un pasajero. Esta accion es actualizable en los datos del viaje y en las estadisticas
 
 ### Cuentas registradas
 > * usuario: ivan | contraseña: admin
