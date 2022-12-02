@@ -7,37 +7,75 @@ using Libreria.Enumeradores;
 
 namespace Libreria.entidades
 {
-    public class ViajeSudamericanos : Viajes
+    public sealed class ViajeSudamericanos : Viajes
     {
         private ESudamericanos tipoViaje;
 
-        public ViajeSudamericanos(ESudamericanos tipoViaje,EEstadoViaje estadoDeViaje, DateTime fechaDeViaje, Embarcos tipoCrucero)
+        #region constructor
+        public ViajeSudamericanos() : base()
+        {
+            this.tipoViaje = new ESudamericanos();
+        }
+        public ViajeSudamericanos(ESudamericanos tipoViaje, EEstadoViaje estadoDeViaje, DateTime fechaDeViaje, Embarcos tipoCrucero)
                 : base(estadoDeViaje, fechaDeViaje, tipoCrucero)
         {
             this.tipoViaje = tipoViaje;
-            this.mostrarTipo(this.tipoViaje);
+            this.AsignarTipoDeViaje(this.tipoViaje);
             this.calcularCostoPasajes();
         }
+        #endregion
 
+        #region propiedaes
         public ESudamericanos TipoViaje { get => tipoViaje; set => tipoViaje = value; }
+        #endregion
+
+        #region sobrescritura
 
         public override string ToString()
         {
             return $"TIPO DE VIAJE: {this.tipoViaje.ToString()}\n" + base.ToString();
         }
-
-        public override void mostrarTipo(Object enviar)
+        public override bool Equals(object obj)
         {
-            string dato = enviar.ToString();
-            base.mostrarTipo(dato);
+            return base.Equals(obj);
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+        #endregion
+
+        #region sobrecarga de operadores
         public static ViajeSudamericanos operator +(ViajeSudamericanos viajeA, Pasajeros pasajero)
         {
-            // Verificar si es nulo;
             viajeA = (ViajeSudamericanos)viajeA.AgregarPasajero(viajeA, pasajero);
-
             return viajeA;
         }
+
+        #endregion
+
+        #region sobrescritura
+
+        /// <summary>
+        /// Asigna el tipo de destino: Sudamericano
+        /// </summary>
+        /// <param name="enviar"></param>
+        public override void AsignarTipoDeViaje(Object enviar)
+        {
+            string dato = enviar.ToString();
+            base.destino.EsExtraRegional = false;
+            base.AsignarTipoDeViaje(dato);
+        }
+        #endregion
+
+        #region implementacion del metodo abstracto
+
+        /// <summary>
+        /// Calcula el precio del pasaje
+        /// ademas se implementan los datos de funcionamiento como 
+        /// los viajes programados, la duracion de viaje
+        /// </summary>
         protected override void calcularCostoPasajes()
         {
             Random numeroAlatorio = new Random();
@@ -45,19 +83,13 @@ namespace Libreria.entidades
             base.fechaDeLlegada = base.fechaDeViaje.AddHours(base.duracionDelViaje);
             base.tipoCrucero.HorasDeViaje += base.duracionDelViaje;
 
-            ViajesProgramados viajesProgramados = new ViajesProgramados(base.Destino, base.fechaDeViaje, base.fechaDeLlegada);
+            ViajesProgramados viajesProgramados = new ViajesProgramados(base.Destino.Nombre, base.fechaDeViaje, base.fechaDeLlegada);
             base.tipoCrucero.ListaViajesProgramados.Add(viajesProgramados);
-
 
             double costo = 57 * base.duracionDelViaje;
             base.costoViajeTurista = costo;
             base.costoViajePremiun = costo + costo * 0.20;
-
-            int cantidadTurista = 1 + Viajes.cantidad(this, ETipoClase.TURISTA); 
-            int cantidadPremiun = 1 + Viajes.cantidad(this, ETipoClase.PREMIUN);
-            Viajes.gananciasSudamericanos += (int)base.costoViajeTurista * cantidadTurista;
-            Viajes.gananciasSudamericanos += (int)base.costoViajeTurista * cantidadPremiun;
-
         }
+        #endregion
     }
 }

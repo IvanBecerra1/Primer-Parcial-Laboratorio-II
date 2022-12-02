@@ -10,28 +10,28 @@ namespace Libreria.entidades
     public sealed class Cuenta
     {
         private string nombre;
-        private DateTime fecha;
-
         private string password;
         private string usuario;
 
-        public Cuenta(string usuario, string password)
+        #region constructores
+        public Cuenta(string usuario, string password) 
         {
             this.usuario = usuario;
-            this.Password = password;
+            this.password = password;
         }
-        public Cuenta(string nombre, DateTime fecha, string usuario, string password) : this(nombre, password)
+        public Cuenta(string nombre,string usuario, string password) : this(usuario, password)
         {
-            this.fecha = fecha;
-            this.nombre = usuario;
+            this.nombre = nombre;
         }
+        #endregion
 
+        #region propiedades
         public string Nombre { get => nombre; set => nombre = value; }
-        public DateTime Fecha { get => fecha; set => fecha = value; }
         public string Password { get => password; set => password = value; }
         public string Usuario { get => usuario; set => usuario = value; }
+        #endregion
 
-
+        #region sobrescritura
         public override bool Equals(object obj)
         {
             if (obj is Cuenta)
@@ -44,6 +44,9 @@ namespace Libreria.entidades
         {
             return base.GetHashCode();
         }
+        #endregion
+
+        #region sobrecarga
         public static bool operator ==(Cuenta usuarioA, Cuenta usuarioB)
         {
             return (usuarioA.usuario == usuarioB.usuario) && (usuarioA.password == usuarioB.password);
@@ -53,5 +56,6 @@ namespace Libreria.entidades
             return (usuarioA == usuarioB);
         }
 
+        #endregion
     }
 }

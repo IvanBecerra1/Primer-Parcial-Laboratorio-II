@@ -16,6 +16,7 @@ namespace WinFormulario
 {
     public partial class frmLogeo : Form
     {
+        private bool botonSalir; 
         private BaseDatos baseDatos;
         public frmLogeo()
         {
@@ -28,14 +29,19 @@ namespace WinFormulario
             this.lblMensajeError.Visible = false;
 
         }
-
+        /// <summary>
+        /// Boton para acceder al formulario de panel
+        /// y verificar si se pudo registrar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAcceder_Click(object sender, EventArgs e)
         {
             String ingresoUsuario = this.textUsuario.Text;
             String ingresoPassword = this.textPassword.Text;
 
             bool logeado = false;
-            Cuenta usuario = BaseDatos.iniciarSesion(new Cuenta(ingresoUsuario, ingresoPassword), this.baseDatos.ListaUsuarios);
+            Cuenta usuario = BaseDatos.iniciarSesion(new Cuenta(ingresoUsuario, ingresoPassword), this.baseDatos);
 
             if (usuario is not null)
             {
@@ -45,37 +51,52 @@ namespace WinFormulario
 
             if (logeado)
             {
-                frmPanel frmPanel = new frmPanel(baseDatos);
-                frmPanel.Show();
                 this.Hide();
+                frmPanel frmPanel = new frmPanel(baseDatos);
+                frmPanel.ShowDialog();
+
+                if (frmPanel.DialogResult == DialogResult.Cancel)
+                {
+                    this.Show();
+                    this.textPassword.Clear();
+                    this.textUsuario.Clear();
+                }
+                else if (frmPanel.DialogResult == DialogResult.Abort)
+                {
+                    this.botonSalir = true;
+
+                    Application.Exit();
+                }
             }
             else
             {
                 this.lblMensajeError.Visible = true;
             }
         }
-        public void actualizarBarcos()
-        {
-            
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textUsuario_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Evento para prevenir el cierre y preguntar si quiere salir.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmLogeo_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-        }
+            if (this.botonSalir == true)
+            {
+                e.Cancel = false;
+                return;
+            }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
+            DialogResult dr = MessageBox.Show("¿Desea salir?", "Confirme", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-        }
-
-        private void lblMensajeError_Click(object sender, EventArgs e)
-        {
-
+            if (dr == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                e.Cancel = false;
+            }
         }
     }
 }

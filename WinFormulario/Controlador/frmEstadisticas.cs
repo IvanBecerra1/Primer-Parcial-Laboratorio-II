@@ -22,25 +22,43 @@ namespace WinFormulario.Controlador
         {
             this.baseDatos = datos;
         }
-
+        /// <summary>
+        /// Cargamos las estadisticas
+        /// se llama a los metodos correspondientes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmEstadisticas_Load(object sender, EventArgs e)
         {
-            this.textBoxRegionales.Text = Viajes.GananciasRegional.ToString();
-            this.textBoxSudamericanos.Text = Viajes.GananciasSudamericanos.ToString();
-            
+            List<Destino> listaDestino = new List<Destino>();
+            List<Pasajeros> listaPasajerosTop15 = new List<Pasajeros>();
+            this.textBoxRegionales.Text = BaseDatos.consultarTotalFacturacionViajes(this.baseDatos, true).ToString();
+            this.textBoxSudamericanos.Text = BaseDatos.consultarTotalFacturacionViajes(this.baseDatos, false).ToString(); ;
+
             foreach (Embarcos aux in baseDatos.ListaDeBarcos)
             {
-                this.listBoxHorasCruceros.Items.Add(aux.ToString());
+                this.listBoxHorasCruceros.Items.Add($"- {aux.Nombre} - Horas totales: {aux.HorasDeViaje}");
             }
+          
+            listaPasajerosTop15 = this.baseDatos.ListaDePasajeros;
+            listaPasajerosTop15.Sort(Pasajeros.ordenarPorCantidadDeViajes);
 
             foreach (Pasajeros aux in baseDatos.ListaDePasajeros)
             {
-                if (aux.CantidadViajesHechos < 0)
-                {
-                    continue;
-                }
-                this.listBoxHorasCruceros.Items.Add(aux.ToString());
+                this.listBoxPasajerosFrecuentes.Items.Add($"- {aux.Nombre} - Cantidad de viajes: {aux.CantidadViajesHechos}");
             }
+
+            listaDestino = BaseDatos.consultarFacturacionDestino(baseDatos.ListaDeViajes);
+            foreach (Destino auxDestino in listaDestino)
+            {
+                this.listBoxEstaditicaDestinos.Items.Add($"- {(string) auxDestino} - Total facturado: {auxDestino.TotalFacturacion}");
+            }
+
+            listaDestino = BaseDatos.consultarDestinoMasElegido(baseDatos.ListaDeViajes);
+            foreach (Destino auxDestino in listaDestino)
+            {
+                this.listBoxDestinoDemandado.Items.Add($"- {(string) auxDestino} - Veces concurrido: {auxDestino.CantidadConcurrido}");
+            }            
         }
     }
 }

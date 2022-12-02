@@ -14,6 +14,9 @@ using System.Windows.Forms;
 
 namespace WinFormulario.Controlador
 {
+    /// <summary>
+    /// Este formulario sera utilizado como Formulario padre para los demas form del panel
+    /// </summary>
     public partial class frmOpciones : Form
     {
        
@@ -21,9 +24,5 @@ namespace WinFormulario.Controlador
         {
             InitializeComponent();
         }
-
-      //  public Cuenta UsuarioLogeado { get => usuarioLogeado; set => usuarioLogeado = value; }
-
-
     }
 }

@@ -13,55 +13,51 @@ namespace Libreria.entidades
     public abstract class Viajes
     {
         protected int id;
-        private static int idContador;
-
+        protected static int idContador;
         protected EEstadoViaje estadoDelViaje;
-
         protected string ciudadDePartida;
         protected DateTime fechaDeViaje;
         protected DateTime fechaDeLlegada;
-
         protected int cantCamarotesDisponiblesPremiun;
         protected int cantCamarotesDisponiblesTurista;
-
         protected int cantidadRestanteTurista;
         protected int cantidadRestantePremiun;
-
         protected List<Pasajeros> listaPasajeros;
-
         protected Embarcos tipoCrucero;
-
         protected double costoViajePremiun;
         protected double costoViajeTurista;
         protected double duracionDelViaje;
-        protected string destino;
+        protected Destino destino;
 
-        protected static int gananciasRegional;
-        protected static int gananciasSudamericanos;
-        
-        public Viajes(Embarcos tipoCrucero, DateTime fechaDeViaje)
+
+        #region constructores
+        public Viajes()
         {
             this.id = Viajes.idContador++;
-            this.tipoCrucero = tipoCrucero;
             this.ciudadDePartida = "Buenos Aires";
             this.estadoDelViaje = EEstadoViaje.DISPONIBLE;
             this.listaPasajeros = new List<Pasajeros>();
-            this.tipoCrucero.FechasProgramadas.Add(fechaDeViaje);
+            this.destino = new Destino();
+        }
+        public Viajes(Embarcos tipoCrucero, DateTime fechaDeViaje) : this()
+        {
+            this.tipoCrucero = tipoCrucero;
 
+            Math.Round((tipoCrucero.CantidadCamarotes * 0.35) * 4);
+            this.cantCamarotesDisponiblesPremiun = (int)Math.Round((tipoCrucero.CantidadCamarotes * 0.35) * 4);
+            this.cantCamarotesDisponiblesTurista = (tipoCrucero.CantidadCamarotes * 4) - this.cantCamarotesDisponiblesPremiun;
 
-            // Obtenemos y seteamos los camarotes
-            this.cantCamarotesDisponiblesPremiun = ((int)(tipoCrucero.CantidadCamarotes * 0.35))*4;
-            this.cantCamarotesDisponiblesTurista = ((int)(tipoCrucero.CantidadCamarotes - tipoCrucero.CantidadCamarotes * 0.35))*4;
-          
             this.cantidadRestantePremiun = cantCamarotesDisponiblesPremiun;
             this.cantidadRestanteTurista = cantCamarotesDisponiblesTurista;
         }
-        public Viajes(EEstadoViaje estadoDelViaje, DateTime fechaDeViaje, Embarcos tipoCrucero) 
+        public Viajes(EEstadoViaje estadoDelViaje, DateTime fechaDeViaje, Embarcos tipoCrucero)
             : this(tipoCrucero, fechaDeViaje)
         {
             this.estadoDelViaje = estadoDelViaje;
             this.fechaDeViaje = fechaDeViaje;
         }
+
+        #endregion
 
         #region Propiedades
 
@@ -75,17 +71,16 @@ namespace Libreria.entidades
         public double CostoViajePremiun { get => costoViajePremiun; set => costoViajePremiun = value; }
         public double CostoViajeTurista { get => costoViajeTurista; set => costoViajeTurista = value; }
         public double DuracionDelViaje { get => duracionDelViaje; set => duracionDelViaje = value; }
-        public string Destino { get => destino; set => destino = value; }
         public int Id { get => id; set => id = value; }
         public DateTime FechaDeLlegada { get => fechaDeLlegada; set => fechaDeLlegada = value; }
         public int CantidadRestanteTurista { get => cantidadRestanteTurista; set => cantidadRestanteTurista = value; }
         public int CantidadRestantePremiun { get => cantidadRestantePremiun; set => cantidadRestantePremiun = value; }
-        public static int GananciasRegional { get => gananciasRegional; set => gananciasRegional = value; }
-        public static int GananciasSudamericanos { get => gananciasSudamericanos; set => gananciasSudamericanos = value; }
+
+        public Destino Destino { get => destino; set => destino = value; }
 
         #endregion
 
-        #region Encapsulamiento
+        #region sobrescritura
         public override bool Equals(object obj)
         {
             if (obj is Viajes)
@@ -98,13 +93,9 @@ namespace Libreria.entidades
 
         public override int GetHashCode()
         {
-            return this.GetHashCode();
+            return base.GetHashCode();
         }
 
-        public virtual void mostrarTipo(Object enviar)
-        {
-            this.destino = enviar.ToString();
-        }
         public override string ToString()
         {
             StringBuilder text = new StringBuilder();
@@ -120,43 +111,22 @@ namespace Libreria.entidades
 
             return $"Estado: {this.estadoDelViaje} - Partida: {this.ciudadDePartida} - Fecha de Viaje {this.fechaDeViaje}\n" +
                 $"Camarotes Premiun {this.cantCamarotesDisponiblesPremiun} - Camarotes Turiste {this.cantCamarotesDisponiblesTurista}";
-            //    $"\nDuracion del viaje HS: {Viajes.duracionDelViaje}" +
-            //    $"\nCosto Turista: {Viajes.costoViajeTurista} - Costo Premiun: {Viajes.costoViajePremiun}\n";
         }
 
         #endregion
 
-        #region SobreEscritura
-        /**
-         * Operador para verificar si un pasajero existe dentro de una lista de viaje, evitamos
-         * la repeticion de pasajero.
-         * */
-
-
-        public static bool operator ==(Viajes viajeA, String destino)
-        {
-            return viajeA.destino == destino;
-        }
-
-        public static bool operator !=(Viajes viajeA, String destino)
-        {
-            return viajeA.destino == destino;
-        }
-
+        #region Sobrecarga
 
         public static bool operator ==(Viajes viajeA, Pasajeros pasajero)
         {
             return viajeA.listaPasajeros.Contains(pasajero);
         }
-
         public static bool operator !=(Viajes viajeA, Pasajeros pasajero)
         {
             // Verificar si es nulo;
 
             return !(viajeA == pasajero);
         }
-
-        // Evitar viajes repetidos con el mismo crucero.
         public static bool operator ==(Viajes viajeA, Viajes viajeB)
         {
             return (viajeA.tipoCrucero == viajeB.tipoCrucero) && (viajeA.fechaDeViaje == viajeB.fechaDeViaje);
@@ -173,75 +143,164 @@ namespace Libreria.entidades
             return viajeA;
         }
 
-        protected Viajes AgregarPasajero(Viajes viajeA, Pasajeros pasajero)
+        public static Viajes operator -(Viajes viajeA, Pasajeros pasajero)
         {
-            // Spaggeti.com
-            if ((viajeA == pasajero) == false)
+            if (viajeA.estadoDelViaje == EEstadoViaje.EN_VIAJE
+               || viajeA.estadoDelViaje == EEstadoViaje.NO_DISPONIBLE)
             {
-                if (pasajero.TipoClase == ETipoClase.TURISTA)
-                {
-                    int camarotesRegistradosTurista = cantidad(viajeA, ETipoClase.TURISTA);
-                    if (camarotesRegistradosTurista < viajeA.cantCamarotesDisponiblesTurista)
-                    {
-                        viajeA.cantidadRestanteTurista--;
-                        pasajero.CantidadViajesHechos++;
-                        pasajero.CamaroteAsignado = camarotesRegistradosTurista;
+                return viajeA;
+            }
 
-                        viajeA.listaPasajeros.Add(pasajero);
-                        Console.WriteLine("se agrego al pasajero turista");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Camarote Turista Lleno");
+            if (!(viajeA == pasajero))
+            {
+                return viajeA;
+            }
 
-                    }
-                }
-                else if (pasajero.TipoClase == ETipoClase.PREMIUN)
-                {
-                    int camarotesRegistradosPremiun = cantidad(viajeA, ETipoClase.PREMIUN);
-                    if (camarotesRegistradosPremiun < viajeA.cantCamarotesDisponiblesTurista)
-                    {
-                        viajeA.cantidadRestantePremiun--;
-                        pasajero.CantidadViajesHechos++;
-                        pasajero.CamaroteAsignado = camarotesRegistradosPremiun;
+            viajeA.listaPasajeros.Remove(pasajero);
 
-                        viajeA.listaPasajeros.Add(pasajero);
-                        Console.WriteLine("se agrego al pasajero premiun");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Camarote Premiun Lleno");
-                    }
-                }
+            double costo = 0;
+            if (pasajero.TipoClase == ETipoClase.TURISTA)
+            {
+                costo = Viajes.calcularPrecioFinalBoleto(viajeA, true);
+                viajeA.CantidadRestanteTurista++;
             }
             else
             {
-                Console.WriteLine("YA SE ENCUENTRA DENTRO DEL VIAJE");
+                costo = Viajes.calcularPrecioFinalBoleto(viajeA, false);
+                viajeA.CantidadRestantePremiun++;
             }
+
+            if (!(viajeA.cantidadRestanteTurista == 0 && viajeA.cantidadRestantePremiun == 0) )
+            {
+                viajeA.EstadoDelViaje = EEstadoViaje.DISPONIBLE;
+            }
+
+            viajeA.Destino.TotalFacturacion -= costo;
+            viajeA.destino.CantidadConcurrido--;
+            viajeA.tipoCrucero.CapacidadBodega += pasajero.Equipaje.PesoValija1;
+            viajeA.tipoCrucero.CapacidadBodega += pasajero.Equipaje.PesoValija2;
+
+            return viajeA;
+        }
+        protected Viajes AgregarPasajero(Viajes viajeA, Pasajeros pasajero)
+        {
+            if (viajeA.estadoDelViaje == EEstadoViaje.EN_VIAJE
+                || viajeA.estadoDelViaje == EEstadoViaje.LLENO
+                || viajeA.estadoDelViaje == EEstadoViaje.NO_DISPONIBLE)
+            {
+                return viajeA;
+            }
+            if ((viajeA == pasajero))
+            {
+                return viajeA;
+            }
+            if ((pasajero.TipoClase == ETipoClase.TURISTA && viajeA.CantidadRestanteTurista == 0)
+                || (pasajero.TipoClase == ETipoClase.PREMIUN && viajeA.CantidadRestantePremiun == 0))
+            {
+                return viajeA;
+            }
+            if (viajeA.tipoCrucero.CapacidadBodega <= 0)
+            {
+                viajeA.tipoCrucero.CapacidadBodega = 0;
+                return viajeA;
+            }
+
+            int camaroteAsignado = 0;
+            double costo = 0;
+
+            if (pasajero.TipoClase == ETipoClase.TURISTA)
+            {
+                costo = Viajes.calcularPrecioFinalBoleto(viajeA, true); 
+                camaroteAsignado = cantidad(viajeA.ListaPasajeros, ETipoClase.TURISTA);
+                viajeA.cantidadRestanteTurista--;
+            }
+            else if (pasajero.TipoClase == ETipoClase.PREMIUN)
+            {
+                costo = Viajes.calcularPrecioFinalBoleto(viajeA, false);
+                camaroteAsignado = cantidad(viajeA.ListaPasajeros, ETipoClase.PREMIUN); 
+                viajeA.cantidadRestantePremiun--;
+            }
+
+            pasajero.CamaroteAsignado = camaroteAsignado;
+            pasajero.CantidadViajesHechos++;
+
+            viajeA.tipoCrucero.CapacidadBodega -= pasajero.Equipaje.PesoValija1;
+            viajeA.tipoCrucero.CapacidadBodega -= pasajero.Equipaje.PesoValija2;
+
+            viajeA.Destino.TotalFacturacion += costo;
+            viajeA.destino.CantidadConcurrido++;
+            viajeA.listaPasajeros.Add(pasajero);
 
             if (viajeA.cantidadRestanteTurista == 0 && viajeA.cantidadRestantePremiun == 0)
             {
                 viajeA.EstadoDelViaje = EEstadoViaje.LLENO;
             }
+            
             return viajeA;
         }
         #endregion
 
-        protected abstract void calcularCostoPasajes();
-
-        protected static int cantidad(Viajes viaje, ETipoClase tipo)
+        #region metodo virtual
+        /// <summary>
+        /// Este metodo funciona para asignar el nombre 
+        /// al destino del viaje.
+        /// </summary>
+        /// <param name="enviar"></param>
+        public virtual void AsignarTipoDeViaje(Object enviar)
         {
-            int cantidadDisponible = 0;
-
-            foreach (Pasajeros auxPasajeros in viaje.listaPasajeros)
-            {
-                if (auxPasajeros.TipoClase == tipo)
-                {
-                    cantidadDisponible++;
-                }
-            }
-
-            return cantidadDisponible;
+            this.Destino.Nombre = enviar.ToString();
         }
+        #endregion
+
+        #region metodo abstracto
+
+        /// <summary>
+        /// Este metodo abstracto sirvira para calcular los costos de
+        /// los pasasjes entre los viajes Extra regional y sudamericano
+        /// tendra su implementacion en la clases derivadas.
+        /// </summary>
+        protected abstract void calcularCostoPasajes();
+        #endregion
+
+        #region metodos de clase
+
+        /// <summary>
+        /// Retornara la cantidad de pasajeros que estan dentro de la lista
+        /// </summary>
+        /// <param name="listaPasajeros"></param>
+        /// <param name="tipo"></param>
+        /// <returns>El numero de pasajeros Turista o Premiun</returns>
+        protected static int cantidad(List<Pasajeros> listaPasajeros, ETipoClase tipo)
+        {
+            List<Pasajeros> pasajerosEncontrados = new List<Pasajeros>();
+            pasajerosEncontrados = listaPasajeros.FindAll(aux => aux.TipoClase == tipo);
+            return pasajerosEncontrados.Count;
+        }
+      
+        /// <summary>
+        /// Calcula el boleto para el pasajero, incluyendo 
+        /// los impuestos y tasas
+        /// </summary>
+        /// <param name="viaje"></param>
+        /// <param name="turista"></param>
+        /// <returns>Devolvera el precio final del boleto</returns>
+        public static double calcularPrecioFinalBoleto(Viajes viaje, bool turista)
+        {
+            double costo = 0;
+
+            if (turista)
+                costo = viaje.costoViajeTurista;
+            else
+                costo = viaje.costoViajePremiun;
+
+            const double IVA = 0.21;
+            const double TASAS = 0.5;
+            const double IMPUESTO_PAIS = 0.30;
+
+            double costoImpuestos = ((costo) * IVA) + ((costo) * TASAS) + ((costo) * IMPUESTO_PAIS);
+            double costoFinal = costo + costoImpuestos;
+            return costoFinal;
+        }
+        #endregion
     }
 }

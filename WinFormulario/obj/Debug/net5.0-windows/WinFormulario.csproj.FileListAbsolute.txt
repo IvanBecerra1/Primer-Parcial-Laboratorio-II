@@ -34,3 +34,5 @@ C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\WinFormulario\obj\Debug
 C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\WinFormulario\obj\Debug\net5.0-windows\WinFormulario.Controlador.frmRegistrarCliente.resources
 C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\WinFormulario\obj\Debug\net5.0-windows\WinFormulario.Controlador.frmConsultarPasaporte.resources
 C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\WinFormulario\obj\Debug\net5.0-windows\WinFormulario.Controlador.formEquipaje.resources
+C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\WinFormulario\obj\Debug\net5.0-windows\WinFormulario.Controlador.frmBoleto.resources
+C:\Users\Ivan\Documents\Programacion-Laboratorio\Parcial\WinFormulario\obj\Debug\net5.0-windows\WinFormulario.frmPasajeGrupoFamiliar.resources

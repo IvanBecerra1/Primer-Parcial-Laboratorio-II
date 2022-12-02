@@ -18,9 +18,6 @@ namespace WinFormulario.Controlador
         private BaseDatos baseDatos;
         private Viajes viajeSeleccionado;
 
-        public BaseDatos BaseDatos { get => baseDatos; set => baseDatos = value; }
-        public Viajes ViajeSeleccionado { get => viajeSeleccionado; set => viajeSeleccionado = value; }
-
         public frmListaViajes()
         {
             InitializeComponent();
@@ -34,36 +31,35 @@ namespace WinFormulario.Controlador
         {
             cargarListado();
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Boton para actualizar el data grid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button6_Click(object sender, EventArgs e)
         {
             cargarListado();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Boton para cargar/crear un viaje
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             frmCargarViaje formulario = new frmCargarViaje(baseDatos);
 
-         //   formulario.BaseDatos = baseDatos;
             formulario.ShowDialog();
 
             if (formulario.DialogResult == DialogResult.OK)
             {
-                // aca devuelvo y se actualiza todo la base de datos.
                 this.baseDatos.ListaDeViajes = formulario.BaseDatos.ListaDeViajes;
             }
         }
-
+        /// <summary>
+        /// Informacion del DataGrid
+        /// </summary>
         private void cargarListado()
         {
 
@@ -75,13 +71,17 @@ namespace WinFormulario.Controlador
 
                 int indice = this.dataGridViajes.Rows.Add();
                 this.dataGridViajes.Rows[indice].Cells[0].Value = aux.Id;
-                this.dataGridViajes.Rows[indice].Cells[1].Value = aux.Destino;
+                this.dataGridViajes.Rows[indice].Cells[1].Value = (string) aux.Destino;
                 this.dataGridViajes.Rows[indice].Cells[2].Value = aux.TipoCrucero.Nombre; // crucero
-                this.dataGridViajes.Rows[indice].Cells[3].Value = aux.FechaDeViaje; // fecha de viaje
+                this.dataGridViajes.Rows[indice].Cells[3].Value = aux.FechaDeViaje.ToString("dd-MM-yyyy"); ; // fecha de viaje
                 this.dataGridViajes.Rows[indice].Cells[4].Value = aux.EstadoDelViaje.ToString(); // Estado
             }
         }
-
+        /// <summary>
+        /// Evento donde obtenemos el Id del viaje 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridViajes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
@@ -89,37 +89,17 @@ namespace WinFormulario.Controlador
             if (index != -1)
             {
                 int idEncontrado = (int) this.dataGridViajes.Rows[index].Cells[0].Value;
-                this.viajeSeleccionado = BaseDatos.buscarViajePorId(idEncontrado, baseDatos.ListaDeViajes);
-                //cargarInformacion();
+                this.viajeSeleccionado = BaseDatos.buscarViajePorId(idEncontrado, this.baseDatos);
             }
         }
-        /*
-         
-        public void cargarInformacion()
-        {
-            if (viajeSeleccionado is null)
-            {
-                return;
-            }
-            this.textBoxEstado.Text = viajeSeleccionado.EstadoDelViaje.ToString();
-            this.textBoxCiudadPartida.Text = viajeSeleccionado.CiudadDePartida;
-            this.textBoxFecha.Text = viajeSeleccionado.FechaDeViaje.ToString("dd-MM-yyyy");
-            this.textBoxFechaLLegada.Text = viajeSeleccionado.FechaDeLlegada.ToString("dd-MM-yyyy");
-            this.textBoxCamarotesPremiun.Text = viajeSeleccionado.CantCamarotesDisponiblesPremiun.ToString();
-            this.textBoxCamarotesTurista.Text = viajeSeleccionado.CantCamarotesDisponiblesTurista.ToString();
-            this.textBoxCapacidadBodega.Text = viajeSeleccionado.TipoCrucero.CapacidadBodega.ToString();
-            this.textBoxCostoPreminu.Text = viajeSeleccionado.CostoViajePremiun.ToString();
-            this.textBoxCostoTurista.Text = viajeSeleccionado.CostoViajeTurista.ToString();
-            this.textBoxDuracion.Text = viajeSeleccionado.DuracionDelViaje.ToString();
-            this.textBoxDestino.Text = viajeSeleccionado.Destino;
-        }
-
-         */
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.OK;
-        }
-
+     
+        /// <summary>
+        /// Boton para ver la informacion del barco
+        /// Si no se selecciono ningun barco del datagrid 
+        /// no sigue y retornamos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             if (viajeSeleccionado is null)
@@ -131,7 +111,11 @@ namespace WinFormulario.Controlador
             infoBarco.Embarco = viajeSeleccionado.TipoCrucero;
             infoBarco.ShowDialog();
         }
-
+        /// <summary>
+        /// Boton para ver la informacion del Viaje
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click_1(object sender, EventArgs e)
         {
             if (viajeSeleccionado is null)
@@ -143,6 +127,19 @@ namespace WinFormulario.Controlador
 
             infoViaje.ViajeSeleccionado = viajeSeleccionado;
             infoViaje.ShowDialog();
+        }
+        /// <summary>
+        /// Boton de ayuda/informacion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button4_Click(object sender, EventArgs e)
+        {
+            StringBuilder text = new StringBuilder();
+            text.AppendLine("* Podra registrar un viaje, con la opcion Cargar viaje");
+            text.AppendLine("* Podra ver una lista de viaje, toque el boton actualizar si su viaje cargado no se encuentre");
+            text.AppendLine("* Si quiere ver informacion en concreta, seleccione un viaje en la tabla.");
+            MessageBox.Show(text.ToString(), "Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
     }
 }
